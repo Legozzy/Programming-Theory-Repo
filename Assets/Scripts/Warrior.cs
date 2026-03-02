@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class Warrior : Character
 {
-    public override void Attack(Character target)
+    public override void Attack(IDamageable target)
     {
+        if (target is null)
+            return;
+
         Debug.Log("Warrior attacks");
-        target.TakeDamage(20f);
+        target.TakeDamage(25f);
     }
 
     protected override void Die()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHealth = 100f;
     protected float currentHealth;
@@ -10,7 +10,7 @@ public abstract class Character : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public abstract void Attack(Character target);
+    public abstract void Attack(IDamageable target);
 
     public virtual void TakeDamage(float damage)
     {
