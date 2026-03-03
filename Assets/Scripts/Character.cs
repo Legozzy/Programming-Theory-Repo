@@ -1,9 +1,10 @@
 using UnityEngine;
 
+// ABSTRACTION
 public abstract class Character : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHealth = 100f;
-    protected float currentHealth;
+    protected float currentHealth; // ENCAPSULATION
 
     protected virtual void Start()
     {
@@ -15,7 +16,8 @@ public abstract class Character : MonoBehaviour, IDamageable
     public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        Debug.Log($"{gameObject.name} took {damage} damage. HP left: {currentHealth}");
+        UIManager.Instance.ShowMessage($"{gameObject.name} took {damage} damage. HP left: {currentHealth}");
+        //Debug.Log($"{gameObject.name} took {damage} damage. HP left: {currentHealth}");
         
         if (currentHealth <= 0)
         {
